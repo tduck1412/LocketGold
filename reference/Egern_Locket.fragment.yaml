@@ -1,0 +1,22 @@
+# Trich phan Locket tu Egern_LockGold.yaml cua duyvinh09/Module_IOS.
+# Day la doan cau hinh tham khao, khong phai cau hinh Egern day du.
+# Script duoc tham chieu nam o repository vuong2023/shad, khong nam trong goi nay.
+header_rewrites:
+- delete:
+    match: ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$)
+    name: X-RevenueCat-ETag
+    type: request
+- delete:
+    match: ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$)
+    name: x-revenuecat-etag
+    type: request
+scriptings:
+- http_response:
+    name: Locket_Gold
+    match: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$)
+    script_url: https://raw.githubusercontent.com/vuong2023/shad/main/js/Locket.js
+    update_interval: 5
+    body_required: true
+mitm:
+  hostnames:
+  - api.revenuecat.com

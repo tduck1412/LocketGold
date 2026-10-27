@@ -1,0 +1,65 @@
+{
+  "source_repository": "https://github.com/duyvinh09/Module_IOS",
+  "source_commit": "4936c663773284c7ef429da1d0ea1ee71144790e",
+  "extracted_on": "2026-10-23",
+  "code_policy": "Original 7 files copied byte-for-byte; no changes to source logic or URLs.",
+  "files": [
+    {
+      "path": "modules/Locket_tduc.sgmodule",
+      "source_path": "modules/Locket_duyvinh09.sgmodule",
+      "unchanged": false
+    },
+    {
+      "path": "js/Locket_tduc.js",
+      "source_path": "js/Locket_DuyVinh09.js",
+      "unchanged": false
+    },
+    {
+      "path": "js/Locket_Unlocked.js",
+      "source_path": "js/Locket_Unlocked.js",
+      "sha256": "a55f5940ada2cfc1191d0f73d88afc1ff727b22043a65b489e387a9dbdf933c3",
+      "unchanged": true
+    },
+    {
+      "path": "js/deleteHeader.js",
+      "source_path": "js/deleteHeader.js",
+      "sha256": "232ca03e04ec90ba7f820a82fbd22e86d332c13cda3864436225b71f4e8d70f7",
+      "unchanged": true
+    },
+    {
+      "path": "js/Locket_rc_us.js",
+      "source_path": "js/Locket_rc_us.js",
+      "sha256": "c56d0a2e7a9e248a8093eac23b29dbd5e7d0faefbdfdf9517456bfc95523d163",
+      "unchanged": true
+    },
+    {
+      "path": "assets/LocketGold.mobileconfig",
+      "source_path": "assets/LocketGold.mobileconfig",
+      "sha256": "9d09b0799ced7a63e1e34eaefb1519fcc91565ceb2b412c104cdf8a7f2a19940",
+      "unchanged": true
+    },
+    {
+      "path": "assets/locket.mobileconfig",
+      "source_path": "assets/locket.mobileconfig",
+      "sha256": "fa5b34aa25a0d236ecc3e6ff867e649673881358132619ad5ff58a64394337f6",
+      "unchanged": true
+    }
+  ],
+  "derived_files": [
+    {
+      "path": "reference/Egern_Locket.fragment.yaml",
+      "source_path": "Egern_LockGold.yaml",
+      "changes": "Keep RevenueCat header_rewrites and Locket_Gold http_response stanza; narrow mitm hostnames to api.revenuecat.com; omit general routing, CA settings, captures and unrelated modules. This is a reference fragment only.",
+      "external_script_included": false,
+      "sha256": "b7ff6106dcdd1071cdff1e89efbfac2a2bbaf27c832d5d34158dc9e6ac6d4ea8"
+    }
+  ],
+  "validation": {
+    "byte_identical_original_files": 7,
+    "javascript_syntax_checked": 4,
+    "mobileconfig_plists_parsed": 2,
+    "module_script_targets_included": 4,
+    "iphone_runtime_tested": false,
+    "live_service_requests_made": false
+  }
+}
