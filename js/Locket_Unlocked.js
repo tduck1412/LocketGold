@@ -261,7 +261,7 @@ if (ua.includes("Locket")) {
         widget_frame_event: JSON.stringify({
             uid: "midautumn_2026",
             // url: "https://i.ibb.co/vC8b93Ld/ig.png",
-            url: "https://i.ibb.co/nsbFtYhW/Thi-t-k-ch-a-c-t-n-2.png",
+            url:"https://i.ibb.co/FLmvntnx/Thi-t-k-ch-a-c-t-n-3.png" alt="Thi-t-k-ch-a-c-t-n-3",
             // url: "https://i.ibb.co/1Yt1Dzzy/Shin-chan-1.png",
             // url: "https://i.ibb.co/RTm5P1n9/kitty-1.png",
             // url: "https://i.ibb.co/JjLZ3cvD/khung-ins.png",
