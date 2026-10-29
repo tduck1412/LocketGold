@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadDisplayName</key>
+    <string>Locket Gold DNS - @tduc 💛</string>
+
+    <key>PayloadDescription</key>
+    <string>Anti-Revoke DNS tự viết by @tduc. Chặn thu hồi Locket Gold vĩnh viễn. Chạy trên Cloudflare Worker - không phụ thuộc bên thứ ba.</string>
+
+    <key>PayloadIdentifier</key>
+    <string>com.tduc.locketgold.dns.worker</string>
+
+    <key>PayloadOrganization</key>
+    <string>tduc</string>
+
+    <key>PayloadScope</key>
+    <string>System</string>
+
+    <key>PayloadType</key>
+    <string>Configuration</string>
+
+    <key>PayloadUUID</key>
+    <!-- UUID này là duy nhất, KHÔNG thay đổi nếu không muốn iOS coi là profile mới -->
+    <string>7F3A1B2C-4D5E-6F7A-8B9C-0D1E2F3A4B5C</string>
+
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+
+            <key>PayloadIdentifier</key>
+            <string>com.tduc.locketgold.dns.worker.settings</string>
+
+            <key>PayloadDisplayName</key>
+            <string>TducGold Worker DNS Engine</string>
+
+            <key>PayloadOrganization</key>
+            <string>tduc</string>
+
+            <key>PayloadUUID</key>
+            <string>1A2B3C4D-5E6F-7A8B-9C0D-1E2F3A4B5C6D</string>
+
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+
+                <!--
+                    ╔══════════════════════════════════════════════════════╗
+                    ║  SAU KHI DEPLOY CLOUDFLARE WORKER:                  ║
+                    ║  Thay URL dưới đây bằng URL worker của bạn.         ║
+                    ║  Ví dụ: https://locket-dns.YOUR_NAME.workers.dev    ║
+                    ╚══════════════════════════════════════════════════════╝
+                -->
+                <key>ServerURL</key>
+                <string>https://locketgold.duc-lht-dev.workers.dev/dns-query</string>
+
+                <!--
+                    ServerAddresses: IP của Cloudflare Workers.
+                    iOS dùng IP này để kết nối khi hostname chưa resolve được.
+                    Đây là IP cố định của Cloudflare anycast - không cần đổi.
+                -->
+                <key>ServerAddresses</key>
+                <array>
+                    <string>104.16.0.0</string>
+                    <string>104.17.0.0</string>
+                    <string>2606:4700::</string>
+                </array>
+
+                <!--
+                    SupplementalMatchDomains = SPLIT DNS
+                    CHỈ các domain này mới đi qua Worker của bạn.
+                    Toàn bộ domain khác (bank, mạng xã hội...) dùng DNS nhà mạng.
+                    → An toàn 100%, không lo lộ dữ liệu.
+                -->
+                <key>SupplementalMatchDomains</key>
+                <array>
+                    <!-- ★ RevenueCat: CHỈ CẦN CHẶN NHỮNG CÁI NÀY ★ -->
+                    <string>revenuecat.com</string>
+                    <string>api.revenuecat.com</string>
+                    <string>app.revenuecat.com</string>
+                    <string>www.revenuecat.com</string>
+                    <string>purchases.revenuecat.com</string>
+                    <string>sdk.revenuecat.com</string>
+                    <string>backend.revenuecat.com</string>
+
+                    <!--
+                        Firebase cũng đi qua Worker để được ưu tiên xử lý.
+                        Worker sẽ MỞ các domain này (ALWAYS_ALLOWED_DOMAINS).
+                        Không lo bị chặn nhầm.
+                    -->
+                    <string>firebaseremoteconfig.googleapis.com</string>
+                    <string>firebaseinstallations.googleapis.com</string>
+                </array>
+            </dict>
+
+            <!--
+                OnDemandRules: Khi nào thì kích hoạt DNS này?
+                Cả WiFi lẫn Cellular đều bật.
+            -->
+            <key>OnDemandRules</key>
+            <array>
+                <dict>
+                    <key>Action</key>
+                    <string>Connect</string>
+                    <key>InterfaceTypeMatch</key>
+                    <string>WiFi</string>
+                </dict>
+                <dict>
+                    <key>Action</key>
+                    <string>Connect</string>
+                    <key>InterfaceTypeMatch</key>
+                    <string>Cellular</string>
+                </dict>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist>
+
