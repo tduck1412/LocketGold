@@ -1,0 +1,7 @@
+# Local development files (Mã nguồn chưa mã hóa - không đẩy lên GitHub)
+*.dev.js
+scratch/
+
+# OS files
+.DS_Store
+Thumbs.db
