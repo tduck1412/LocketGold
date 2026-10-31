@@ -250,6 +250,20 @@ if (ua.includes("Locket")) {
     // ============================================================
     // 6. WIDGET, THÔNG BÁO & GIAO DIỆN (JOURNAL / PROFILE)
     // ============================================================
+    // Tự động xóa nền trắng cho frame qua Cloudinary API
+    var CLOUDINARY_CLOUD_NAME = "lvh4anbw"; // Cloud Name của bạn
+    var FRAME_URL = "https://i.ibb.co/zVDnrVHW/xoanenuytin.png"; // Link ảnh frame (hỗ trợ cả ảnh nền trắng)
+
+    function getTransparentFrame(imageUrl, tolerance) {
+        if (!imageUrl) return imageUrl;
+        if (!CLOUDINARY_CLOUD_NAME || CLOUDINARY_CLOUD_NAME === "YOUR_CLOUD_NAME") {
+            return imageUrl;
+        }
+        if (imageUrl.indexOf("res.cloudinary.com") !== -1) return imageUrl;
+        var tol = tolerance || 25; // Độ dung sai lọc màu trắng (mặc định 25%)
+        return "https://res.cloudinary.com/" + CLOUDINARY_CLOUD_NAME + "/image/fetch/f_png,co_white,e_make_transparent:" + tol + "/" + imageUrl;
+    }
+
     Object.assign(obj.entries, {
         widget_frame_event_max_images: "5",
         android_widget_frame_event_enabled: "true",
@@ -261,7 +275,7 @@ if (ua.includes("Locket")) {
         widget_frame_event: JSON.stringify({
             uid: "midautumn_2026",
             // url: "https://i.ibb.co/vC8b93Ld/ig.png",
-            url:"https://i.ibb.co/zVDnrVHW/xoanenuytin.png",
+            url: getTransparentFrame(FRAME_URL),
             // url: "https://i.ibb.co/1Yt1Dzzy/Shin-chan-1.png",
             // url: "https://i.ibb.co/RTm5P1n9/kitty-1.png",
             // url: "https://i.ibb.co/JjLZ3cvD/khung-ins.png",
