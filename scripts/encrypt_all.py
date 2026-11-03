@@ -44,6 +44,14 @@ SCRIPTS = [
         "key": 0x55,
         "author": "@tduc",
         "version": "2.2.0"
+    },
+    {
+        "src": "js/locket_profile.dev.js",
+        "dst": "js/locket_profile.js",
+        "name": "Locket Profile & Badge Controller",
+        "key": 0x42,
+        "author": "@tduc",
+        "version": "1.0.0"
     }
 ]
 

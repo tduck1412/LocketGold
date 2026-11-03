@@ -17,7 +17,7 @@
 // DANH SÁCH DOMAIN BỊ CHẶN (trả về 0.0.0.0)
 // ================================================================
 const BLOCKED_DOMAINS = new Set([
-  // RevenueCat - Hệ thống xác thực và thu hồi gói Gold
+  // 1. RevenueCat - Hệ thống xác thực và thu hồi gói Gold
   "api.revenuecat.com",
   "app.revenuecat.com",
   "revenuecat.com",
@@ -25,6 +25,24 @@ const BLOCKED_DOMAINS = new Set([
   "purchases.revenuecat.com",
   "backend.revenuecat.com",
   "sdk.revenuecat.com",
+
+  // 2. Telemetry, Analytics & User Tracking của Locket
+  "in.appcenter.ms",
+  "app-measurement.com",
+  "mixpanel.com",
+  "api.mixpanel.com",
+  "firebaselogging-pa.googleapis.com",
+  "firebaselogging.googleapis.com",
+  "ingest.sentry.io",
+  "api2.amplitude.com",
+  "appsflyersdk.com",
+  "oy24bn.skadsdkless.appsflyersdk.com",
+
+  // 3. Apple Certificate Anti-Revoke (Chống thu hồi chứng chỉ)
+  "certs.apple.com",
+  "crl.apple.com",
+  "ocsp.apple.com",
+  "ocsp2.apple.com",
 ]);
 
 // ================================================================

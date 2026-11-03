@@ -86,7 +86,7 @@
                 -->
                 <key>SupplementalMatchDomains</key>
                 <array>
-                    <!-- ★ RevenueCat: CHỈ CẦN CHẶN NHỮNG CÁI NÀY ★ -->
+                    <!-- ★ RevenueCat: Hệ thống kiểm tra và thu hồi Gold ★ -->
                     <string>revenuecat.com</string>
                     <string>api.revenuecat.com</string>
                     <string>app.revenuecat.com</string>
@@ -95,33 +95,61 @@
                     <string>sdk.revenuecat.com</string>
                     <string>backend.revenuecat.com</string>
 
-                    <!--
-                        Firebase cũng đi qua Worker để được ưu tiên xử lý.
-                        Worker sẽ MỞ các domain này (ALWAYS_ALLOWED_DOMAINS).
-                        Không lo bị chặn nhầm.
-                    -->
+                    <!-- ★ Firebase: Tải cấu hình tính năng Gold & Frame (Được whitelist mở) ★ -->
                     <string>firebaseremoteconfig.googleapis.com</string>
                     <string>firebaseinstallations.googleapis.com</string>
+
+                    <!-- ★ Telemetry & Analytics: Chặn theo dõi và gửi log hành vi người dùng ★ -->
+                    <string>in.appcenter.ms</string>
+                    <string>app-measurement.com</string>
+                    <string>mixpanel.com</string>
+                    <string>api.mixpanel.com</string>
+                    <string>firebaselogging-pa.googleapis.com</string>
+                    <string>firebaselogging.googleapis.com</string>
+                    <string>ingest.sentry.io</string>
+                    <string>api2.amplitude.com</string>
+                    <string>appsflyersdk.com</string>
+                    <string>oy24bn.skadsdkless.appsflyersdk.com</string>
+
+                    <!-- ★ Chống thu hồi chứng chỉ Apple (Anti-Revoke Cert) ★ -->
+                    <string>certs.apple.com</string>
+                    <string>certs.apple.com.edgekey.net</string>
+                    <string>crl.apple.com</string>
+                    <string>crl.apple.com.akadns.net</string>
+                    <string>crl.apple.com.edgekey.net</string>
+                    <string>ocsp.apple.com</string>
+                    <string>ocsp.apple.com.edgekey.net</string>
+                    <string>ocsp2.apple.com</string>
                 </array>
             </dict>
 
             <!--
-                OnDemandRules: Khi nào thì kích hoạt DNS này?
-                Cả WiFi lẫn Cellular đều bật.
+                OnDemandRules: Cơ chế kích hoạt thông minh
+                - Tự động bỏ qua Captive Portal (WiFi quán cafe, sân bay cần đăng nhập)
+                - Tự động bật trên tất cả mạng WiFi và 4G/5G
             -->
             <key>OnDemandRules</key>
             <array>
                 <dict>
                     <key>Action</key>
-                    <string>Connect</string>
-                    <key>InterfaceTypeMatch</key>
-                    <string>WiFi</string>
+                    <string>EvaluateConnection</string>
+                    <key>ActionParameters</key>
+                    <array>
+                        <dict>
+                            <key>DomainAction</key>
+                            <string>NeverConnect</string>
+                            <key>Domains</key>
+                            <array>
+                                <string>captive.apple.com</string>
+                                <string>3gppnetwork.org</string>
+                                <string>appleiphonecell.com</string>
+                            </array>
+                        </dict>
+                    </array>
                 </dict>
                 <dict>
                     <key>Action</key>
                     <string>Connect</string>
-                    <key>InterfaceTypeMatch</key>
-                    <string>Cellular</string>
                 </dict>
             </array>
         </dict>
