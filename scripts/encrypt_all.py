@@ -52,6 +52,14 @@ SCRIPTS = [
         "key": 0x42,
         "author": "@tduc",
         "version": "1.0.0"
+    },
+    {
+        "src": "js/filterclassic.dev.js",
+        "dst": "js/filterclassic.js",
+        "name": "Locket AI Filter & Community VIP",
+        "key": 0x7e,
+        "author": "@tduc",
+        "version": "1.0.0"
     }
 ]
 
